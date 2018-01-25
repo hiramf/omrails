@@ -21,10 +21,13 @@
         </ul>
         <ul class="nav navbar-nav navbar-right"
           <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <li class="nav-item"><%= link_to "Admin", admin_dashboard_url, class: "nav-link" %></li>
+            <% end %>
             <li class="nav-item"><%= link_to "Log Out", signout_path, method: :delete, class: "nav-link" %></li>
           <% else %>
-            <li class="nav-item"><%= link_to "Sign In", signin_path, class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "btn btn-primary active" %></li>
+            <li class="nav-item"><%= link_to "Sign In", signin_path, class: "btn btn-primary active" %></li>
+            <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
           <% end %>
         </ul>
       </div>
